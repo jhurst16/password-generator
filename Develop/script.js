@@ -1,14 +1,11 @@
 // Assignment Code
 var generateBtn = document.querySelector('#generate')
 
-// Write password to the #password input
+
 function writePassword() {
   var password = generatePassword(
     promptLength(),
-    promptLowercase(),
-    promptUppercase(),
-    promptNumeric(),
-    promptSpecial(),
+    promptCharset()
   )
   var passwordText = document.querySelector('#password')
 
@@ -16,43 +13,47 @@ function writePassword() {
 }
 
 function generatePassword(
-  length,
-  includeLowercase,
-  includeUppercase,
-  includeNumeric,
-  includeSpecial,
+  length, charset
 ) {
-  var charset = ''
-  if (includeLowercase) {
-    charset += 'abcdefghijklmnopqrstuvwxyz'
-  }
-  if (includeUppercase) {
-    charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  }
-  if (includeNumeric) {
-    charset += '1234567890'
-  }
-  if (includeSpecial) {
-    charset += '!@#$%^&*'
-  }
   var password = ''
   for (var i = 0; i < length; ++i) {
     password += charset.charAt(Math.floor(Math.random() * charset.length))
   }
   return password
-  //return "generating password of length " + length + " and lowercase is " + includeLowercase + " and uppercase is " + includeUppercase + " and numeric is " + includeNumeric + " and special characters is " + includeSpecial;
 }
-
+//got rid of includeCharacter, replaced with prompt
+function promptCharset() {
+  var charset = ''
+  if (promptLowercase()) {
+    charset += 'abcdefghijklmnopqrstuvwxyz'
+  }
+  if (promptUppercase()) {
+    charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  }
+  if (promptNumeric()) {
+    charset += '1234567890'
+  }
+  if (promptSpecial()) {
+    charset += '!@#$%^&*'
+  }
+  if (charset === "") {
+    window.alert("Please choose at least one value!")
+    promptCharset()
+  }
+  return charset;
+}
 //choose the length
 
 function promptLength() {
   var writePassword = window.prompt(
     'How many character would you like your password to be? (8-128 characters',
   )
-
-  if (writePassword <= 7 || writePassword > 128) {
+  //correct length or recall the function
+  if (writePassword < 8 || writePassword > 128) {
     window.alert('Please choose a number between 8-128')
+    promptCharset();
   }
+
   return writePassword
 }
 
