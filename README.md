@@ -9,4 +9,4 @@ https://jhurst16.github.io/password-generator/
 ## SCREENSHOT
 
 
-![SS of website](https://user-images.githubusercontent.com/79426564/116826659-25d8a880-ab63-11eb-8b97-92b4ade4b97c.png)
+![password generator screenshot](https://user-images.githubusercontent.com/79426564/116826760-9d0e3c80-ab63-11eb-89c9-9117506d9ac8.png)
