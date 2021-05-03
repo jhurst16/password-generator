@@ -22,6 +22,8 @@ function generatePassword(
   return password
 }
 //got rid of includeCharacter, replaced with prompt
+//if charset is chosen, charset=charset + ''
+
 function promptCharset() {
   var charset = ''
   if (promptLowercase()) {
@@ -38,7 +40,7 @@ function promptCharset() {
   }
   if (charset === "") {
     window.alert("Please choose at least one value!")
-    promptCharset()
+    promptCharset();
   }
   return charset;
 }
@@ -46,12 +48,16 @@ function promptCharset() {
 
 function promptLength() {
   var writePassword = window.prompt(
-    'How many character would you like your password to be? (8-128 characters',
+    'How many character would you like your password to be? (8-128 characters)',
   )
   //correct length or recall the function
   if (writePassword < 8 || writePassword > 128) {
     window.alert('Please choose a number between 8-128')
-    promptCharset();
+    promptLength();
+  }
+  if (writePassword === promptLowercase, promptUppercase, promptSpecial) {
+    window.alert('please choose a numeric value.')
+    promptLength();
   }
 
   return writePassword
