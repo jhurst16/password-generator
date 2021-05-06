@@ -53,15 +53,15 @@ function promptLength() {
   ))
 
 if (isNaN(passwordLength)){
-  window.alert('Please choose a number between 8-128.')
+  window.alert('Please choose a numeric value.')
   promptLength();
 }
   //correct length or recall the function
   if (passwordLength < 8 || passwordLength > 128) {
-    window.alert('Please choose a number between 8-128')
+    window.alert('Please choose a number between 8-128.')
     promptLength();
   }
-  return passwordLength
+  return passwordLength;
 }
 
 function promptLowercase() {
